@@ -8,6 +8,11 @@ ip_s1=172.25.0.101
 ip_s2=172.25.0.102
 ip_s3=172.25.0.103
 
+# 设置集群环境变量
+# export ETCDCTL_API=3
+# export ETCD_ENDPOINTS=${etcd_initial_cluster}
+
+# 生成配置文件
 ./deploy-etcd-conf.sh s1 ${ip_s1} ${etcd_initial_cluster} ${etcd_containers}
 ./deploy-etcd-conf.sh s2 ${ip_s2} ${etcd_initial_cluster} ${etcd_containers}
 ./deploy-etcd-conf.sh s3 ${ip_s3} ${etcd_initial_cluster} ${etcd_containers}
@@ -30,7 +35,9 @@ fi
 
 # 创建 etcd 服务
 cd ${etcd_containers}
-docker compose up -d
+docker-compose up -d
 
 # 验证 etcd 服务
-docker compose ps
+docker-compose ps
+
+
