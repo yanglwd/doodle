@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "pb.gen";
+
+message ControlMessage {
+  uint32 src_id = 1;
+  uint32 dst_id = 2;
+  uint32 message_id = 3;
+  map<string, string> meta_datas = 4;
+}
